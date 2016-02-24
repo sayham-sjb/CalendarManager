@@ -1,16 +1,37 @@
 import java.io.*; 
-
+/**
+ * @author Sayham Chowdhury
+ * The Class CalendarManager.
+ */
 public class CalendarManager { 
+	
+	/** The entries. */
 	String entries [] = new String[31];//Date entries array 
+	
+	/** The directory. */
 	String directory ; 
+	
+	/** The dir. */
 	File dir;
+	
+	/**
+	 * Instantiates a new calendar manager.
+	 */
 	public CalendarManager() { 
 		directory = "Calendar" ; 
-		File dir = new File( directory ); 
+		File dir = new File(directory); 
 		if (dir.exists()!= true ) //if it does not exist then create 
 		dir.mkdir(); 
 	} 
 	
+	/**
+	 * Gets the file.
+	 *
+	 * @param month the month
+	 * @param year the year
+	 * @return the file
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private void getFile(String month, String year) throws IOException { 
 		String filename = directory + "\\" + month.trim() + year.trim(); 
 		File file = new File(filename); 
@@ -33,6 +54,15 @@ public class CalendarManager {
 			} 
 		}
 
+	/**
+	 * Gets the entry.
+	 *
+	 * @param month the month
+	 * @param day the day
+	 * @param year the year
+	 * @return the entry
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public String getEntry(String month, String day, String year) throws IOException { 
 		getFile(month, year); //Call getfile() method
 		int index=Integer.parseInt (day)-1; 
@@ -44,6 +74,16 @@ public class CalendarManager {
 			return "The entry does not exist!" ; 
 	}
 
+	/**
+	 * Save entry.
+	 *
+	 * @param month the month
+	 * @param day the day
+	 * @param year the year
+	 * @param entry the entry
+	 * @return the string
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public String saveEntry(String month, String day, String year, String entry)throws IOException{   
 		try {
 		getFile(month, year);  //Call getfile() method
